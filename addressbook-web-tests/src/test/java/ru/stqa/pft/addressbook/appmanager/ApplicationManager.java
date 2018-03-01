@@ -11,19 +11,9 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
   FirefoxDriver wd;
 
-  private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
-
-  public static boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
 
   public void init() {
     wd = new FirefoxDriver();
@@ -33,7 +23,6 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
-    contactHelper = new ContactHelper(wd);
   }
 
   public void stop() {
@@ -42,10 +31,6 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
-  }
-
-  public ContactHelper getContactHelper() {
-    return contactHelper;
   }
 
   public NavigationHelper getNavigationHelper() {
