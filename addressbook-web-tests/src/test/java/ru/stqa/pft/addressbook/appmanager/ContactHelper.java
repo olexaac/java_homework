@@ -42,4 +42,8 @@ public class ContactHelper extends HelperBase {
   public void editContact() {
     click(By.xpath("//a[contains(@href,'edit.php?')]"));
   }
+
+  public void submitContactModification() {
+    click(By.xpath("//input[@name='update'][@value='Update']"));
+  }
 }
