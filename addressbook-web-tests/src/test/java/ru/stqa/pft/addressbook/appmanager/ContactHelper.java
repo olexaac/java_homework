@@ -53,4 +53,15 @@ public class ContactHelper extends HelperBase {
   public void submitContactModification() {
     click(By.xpath("//input[@name='update'][@value='Update']"));
   }
+
+  public void createContact(ContactData contact, boolean b) {
+    initContactCreation();
+    fillContactForm((contact), b);
+    submitContactCreation();
+    returnToContactPage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("//a[contains(@href,'edit.php?')]"));
+  }
 }
