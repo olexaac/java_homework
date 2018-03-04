@@ -46,8 +46,8 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//input[@name='update'][@value='Delete']"));
   }
 
-  public void editContact() {
-    click(By.xpath("//a[contains(@href,'edit.php?')]"));
+  public void editContact(int index) {
+    wd.findElements((By.xpath("//a[contains(@href,'edit.php?')]"))).get(index).click();
   }
 
   public void submitContactModification() {
