@@ -64,4 +64,8 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//a[contains(@href,'edit.php?')]"));
   }
+
+  public int getContactCount() {
+    return wd.findElements(By.xpath("//a[contains(@href,'edit.php?')]")).size();
+  }
 }
