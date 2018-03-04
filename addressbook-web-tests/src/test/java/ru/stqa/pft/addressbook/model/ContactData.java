@@ -34,4 +34,31 @@ public class ContactData {
   public String getGroup() {
     return group;
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "lname='" + lname + '\'' +
+            ", fname='" + fname + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (fname != null ? !fname.equals(that.fname) : that.fname != null) return false;
+    return lname != null ? lname.equals(that.lname) : that.lname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = fname != null ? fname.hashCode() : 0;
+    result = 31 * result + (lname != null ? lname.hashCode() : 0);
+    return result;
+  }
 }
