@@ -1,37 +1,45 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String fname;
-  private final String lname;
-  private final String city;
-  private final String phone;
+  private int id = 0;
+  private String fname;
+  private String lname;
+  private String city;
+  private String phone;
   private String group;
-
-  public ContactData(int id, String fname, String lname, String city, String phone, String group) {
-    this.id = id;
-    this.fname = fname;
-    this.lname = lname;
-    this.city = city;
-    this.phone = phone;
-    this.group = group;
-  }
-
-  public ContactData(String fname, String lname, String city, String phone, String group) {
-    this.id = 0;
-    this.fname = fname;
-    this.lname = lname;
-    this.city = city;
-    this.phone = phone;
-    this.group = group;
-  }
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData setId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withPhone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  public ContactData withCity(String city) {
+    this.city = city;
+    return this;
+  }
+
+  public ContactData withLname(String lname) {
+    this.lname = lname;
+    return this;
+  }
+
+  public ContactData withFname(String fname) {
+    this.fname = fname;
+    return this;
   }
 
   public String getFname() {
