@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,10 +49,6 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//input[@name='update'][@value='Delete']"));
   }
 
-  public void editContact(int index) {
-    wd.findElements((By.xpath("//a[contains(@href,'edit.php?')]"))).get(index).click();
-  }
-
   public void editContactById(int id) {
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
   }
@@ -76,11 +71,6 @@ public class ContactHelper extends HelperBase {
     returnToContactPage();
   }
 
-  public void delete(int index) {
-    editContact(index);
-    deleteEditContacts();
-  }
-
   public void delete(ContactData contact) {
     editContactById(contact.getId());
     deleteEditContacts();
@@ -94,19 +84,6 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.xpath("//a[contains(@href,'edit.php?')]")).size();
   }
 
-  public List<ContactData> List() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> rows = wd.findElements(By.name("entry"));
-    for (WebElement row : rows) {
-      List<WebElement> cells = row.findElements(By.tagName("td"));
-      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-      String lastname = cells.get(1).getText();
-      String firstnane = cells.get(2).getText();
-      contacts.add(new ContactData().setId(id).withFname(firstnane).withLname(lastname));
-    }
-    return contacts;
-  }
-
   public Set<ContactData> all() {
     Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
@@ -115,7 +92,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
       String firstnane = cells.get(2).getText();
-      contacts.add(new ContactData().setId(id).withFname(firstnane).withLname(lastname));
+      contacts.add(new ContactData().withId(id).withFname(firstnane).withLname(lastname));
     }
     return contacts;
   }

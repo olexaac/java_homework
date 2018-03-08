@@ -4,8 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -20,7 +18,7 @@ public class ContactCreationTests extends TestBase {
     Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    contact.setId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
+    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
     before.add(contact);
     Assert.assertEquals(before, after);
   }
