@@ -13,6 +13,7 @@ public class ContactData {
   }
 
   public ContactData setId(int id) {
+
     this.id = id;
     return this;
   }
@@ -63,6 +64,15 @@ public class ContactData {
   }
 
   @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", fname='" + fname + '\'' +
+            ", lname='" + lname + '\'' +
+            '}';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -81,14 +91,5 @@ public class ContactData {
     result = 31 * result + (fname != null ? fname.hashCode() : 0);
     result = 31 * result + (lname != null ? lname.hashCode() : 0);
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", fname='" + fname + '\'' +
-            ", lname='" + lname + '\'' +
-            '}';
   }
 }

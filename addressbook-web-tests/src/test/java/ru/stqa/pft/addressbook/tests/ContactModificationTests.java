@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Админ on 01.03.2018.
@@ -23,16 +24,16 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification(){
-    List<ContactData> before = app.contact().List();
-    int index = before.size() - 1;
+    Set<ContactData> before = app.contact().all();
+    ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .setId(before.get(index).getId()).withFname("Test").withLname("Testov").withCity("Moscow").withPhone("+7(123)-456-78-90");
-    app.contact().modify(index, contact);
-    List<ContactData> after = app.contact().List();
+            .setId(modifiedContact.getId()).withFname("Test").withLname("Testov").withCity("Moscow").withPhone("+7(123)-456-78-90");
+    app.contact().modify(contact);
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(index);
+    before.remove(modifiedContact);
     before.add(contact);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Assert.assertEquals(before, after);
   }
 }

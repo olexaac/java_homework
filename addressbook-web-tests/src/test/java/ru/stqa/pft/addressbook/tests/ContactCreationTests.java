@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ContactCreationTests extends TestBase {
@@ -13,14 +14,14 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation() {
     app.goTo().contactPage();
-    List<ContactData> before = app.contact().List();
+    Set<ContactData> before = app.contact().all();
     ContactData contact = new ContactData().withFname("Test").withLname("Testov").withCity("Moscow").withPhone("+7(123)-456-78-90").withGroup("test1");
     app.contact().create((contact), true);
-    List<ContactData> after = app.contact().List();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    contact.setId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
     before.add(contact);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Assert.assertEquals(before, after);
   }
 }
