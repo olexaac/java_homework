@@ -25,12 +25,12 @@ public class ContactMailTests extends TestBase{
 
   private String mergeEmails(ContactData contact) {
     return Arrays.asList(contact.getEmail(), contact.getEmail2(),contact.getEmail3())
-            .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleaned)
+            .stream().filter((s) -> ! s.equals(""))
+            .map(ContactMailTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
   public static String cleaned(String email) {
-    return email.replaceAll("\\s", "").replaceAll("[-()]","");
+    return email.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 }
