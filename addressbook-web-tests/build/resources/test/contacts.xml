@@ -1,0 +1,29 @@
+<list>
+  <group>
+    <fname>Test 0</fname>
+    <lname>Testov
+0</lname>
+    <city>Moscow
+0</city>
+    <phone>123
+0</phone>
+  </group>
+  <group>
+    <fname>Test 1</fname>
+    <lname>Testov
+1</lname>
+    <city>Moscow
+1</city>
+    <phone>123
+1</phone>
+  </group>
+  <group>
+    <fname>Test 2</fname>
+    <lname>Testov
+2</lname>
+    <city>Moscow
+2</city>
+    <phone>123
+2</phone>
+  </group>
+</list>
