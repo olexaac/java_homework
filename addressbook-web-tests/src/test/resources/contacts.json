@@ -1,0 +1,20 @@
+[
+  {
+    "fname": "Test 0",
+    "lname": "Testov\n0",
+    "city": "Moscow\n0",
+    "phone": "123\n0"
+  },
+  {
+    "fname": "Test 1",
+    "lname": "Testov\n1",
+    "city": "Moscow\n1",
+    "phone": "123\n1"
+  },
+  {
+    "fname": "Test 2",
+    "lname": "Testov\n2",
+    "city": "Moscow\n2",
+    "phone": "123\n2"
+  }
+]
