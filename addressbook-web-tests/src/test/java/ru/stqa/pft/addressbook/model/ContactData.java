@@ -16,7 +16,6 @@ public class ContactData {
   private String lname;
   @Expose
   private String city;
-  @Expose
   private String email;
   private String email2;
   private String email3;
