@@ -129,9 +129,12 @@ public class ContactHelper extends HelperBase {
 
   public ContactData infoFromDetailsForm(ContactData contact) {
     detailsContactById(contact.getId());
-    String lastnane = wd.findElement(By.cssSelector("div#content > b")).getText();
+    String home = wd.findElement(By.xpath("//div[@id='content']")).getText();
+    //String mobile = wd.findElement(By.xpath("//div[@id='content']/br[4]")).getText();
+    //String work = wd.findElement(By.xpath("//div[@id='content']/br[5]")).getText();
     wd.navigate().back();
     return new ContactData().withId(contact.getId())
-            .withLname(lastnane);
+            .withHomePhone(home);
+            //.withMobilePhone(mobile).withWorkPhone(work);
   }
 }
