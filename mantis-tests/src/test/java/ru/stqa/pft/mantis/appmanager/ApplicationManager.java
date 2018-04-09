@@ -20,8 +20,8 @@ public class ApplicationManager {
   private WebDriver wd;
 
   private String browser;
-  //private RegistrationHelper registrationHelper;
-  //private FtpHelper ftp;
+  private RegistrationHelper registrationHelper;
+  private FtpHelper ftp;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -47,19 +47,19 @@ public class ApplicationManager {
     return properties.getProperty(key);
   }
 
-  //public RegistrationHelper registration() {
-    //if (registrationHelper == null) {
-      //registrationHelper = new RegistrationHelper(this);
-    //}
-    //return registrationHelper;
-  //}
+  public RegistrationHelper registration() {
+    if (registrationHelper == null) {
+      registrationHelper = new RegistrationHelper(this);
+    }
+    return registrationHelper;
+  }
 
-  //public FtpHelper ftp() {
-    //if (ftp == null) {
-      //ftp = new FtpHelper(this);
-    //}
-    //return ftp;
-  //}
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+    return ftp;
+  }
 
   public WebDriver getDriver() {
     if (wd == null) {
