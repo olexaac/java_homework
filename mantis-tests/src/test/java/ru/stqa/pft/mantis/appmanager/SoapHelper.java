@@ -32,7 +32,7 @@ public class SoapHelper {
             .collect(Collectors.toSet());
   }
 
-  private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+  public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator()
             .getMantisConnectPort(new URL("http://localhost/mantis/api/soap/mantisconnect.php"));
   }
@@ -45,11 +45,23 @@ public class SoapHelper {
     issueData.setDescription(issue.getDescription());
     issueData.setProject(new ObjectRef(BigInteger.valueOf(issue.getProject().getId()), issue.getProject().getName()));
     issueData.setCategory(categories[0]);
-    BigInteger issueId = mc.mc_issue_add("olex", "123", issueData);
+    BigInteger issueId = mc.mc_issue_add("olex","123", issueData);
     IssueData createdIssueData = mc.mc_issue_get("olex", "123", issueId);
     return new Issue().withId(createdIssueData.getId().intValue())
             .withSummary(createdIssueData.getSummary()).withDescription(createdIssueData.getDescription())
             .withProject(new Project().withId(createdIssueData.getProject().getId().intValue())
                     .withName(createdIssueData.getProject().getName()));
+  }
+
+  public Set<Issue> getIssues(Project pr) throws RemoteException, MalformedURLException, ServiceException {
+    MantisConnectPortType mc = getMantisConnect();
+    //IssueData issues = mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(pr.getId()));
+    IssueData[] issues = mc. mc_project_get_issues("olex", "123", BigInteger.valueOf(pr.getId())
+            , BigInteger.valueOf(1), BigInteger.valueOf(10));
+    return Arrays.asList(issues).stream()
+            .map((i) -> new Issue().withId(i.getId().intValue()).withSummary(i.getSummary()).withDescription(i.getDescription())
+                    //.withResolution(i.getResolution())
+                    .withStatus(i.getStatus()))
+            .collect(Collectors.toSet());
   }
 }

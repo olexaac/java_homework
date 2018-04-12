@@ -33,4 +33,18 @@ public class SoapTests extends TestBase {
     Issue created = app.soap().addIssue(issue);
     assertEquals(issue.getSummary(), created.getSummary());
   }
+
+  @Test
+  public void testGetIssues() throws RemoteException, ServiceException, MalformedURLException {
+    Set<Project> projects = app.soap().getProjects();
+    Set<Issue> issues = app.soap().getIssues(projects.iterator().next());
+    System.out.println("Count of Issues : "+ app.soap().getIssues(projects.iterator().next()).size());
+    for (Issue  iss : issues) {
+      System.out.println("Issue Id :"+iss.getId());
+      System.out.println("status: "+iss.getStatus().getName());
+      //System.out.println("resolution: "+iss.getResolution().getName());
+      skipIfNotFixed(iss.getId());
+      System.out.println("---\n");
+    }
+  }
 }

@@ -1,5 +1,7 @@
 package ru.stqa.pft.mantis.model;
 
+import biz.futureware.mantis.rpc.soap.client.ObjectRef;
+
 /**
  * Created by Админ on 12.04.2018.
  */
@@ -9,6 +11,26 @@ public class Issue {
   private String summary;
   private String description;
   private Project project;
+  private ObjectRef resolution;
+  private ObjectRef status;
+
+  public ObjectRef getStatus() {
+    return status;
+  }
+
+  public Issue withStatus(ObjectRef status) {
+    this.status = status;
+    return this;
+  }
+
+  public ObjectRef getResolution() {
+    return resolution;
+  }
+
+  public Issue withResolution(ObjectRef resolution) {
+    this.resolution = resolution;
+    return this;
+  }
 
   public int getId() {
     return id;
