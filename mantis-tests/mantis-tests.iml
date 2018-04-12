@@ -44,5 +44,11 @@
     <orderEntry type="library" name="Gradle: com.google.j2objc:j2objc-annotations:1.1" level="project" />
     <orderEntry type="library" name="Gradle: org.codehaus.mojo:animal-sniffer-annotations:1.14" level="project" />
     <orderEntry type="library" name="Gradle: commons-net:commons-net:3.4" level="project" />
+    <orderEntry type="library" name="Gradle: biz.futureware.mantis:mantis-axis-soap-client:1.2.19" level="project" />
+    <orderEntry type="library" name="Gradle: axis:axis:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: commons-discovery:commons-discovery:0.2" level="project" />
+    <orderEntry type="library" name="Gradle: axis:axis-wsdl4j:1.5.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.axis:axis-jaxrpc:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.axis:axis-saaj:1.4" level="project" />
   </component>
 </module>
